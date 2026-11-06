@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <title>Kitobni tahrirlash</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body { background-color: #F8F9FA; }
+        .card-custom {
+            background-color: #FFFFF0; /* Ivory */
+            border-radius: 15px;
+            border: 1px solid #e2e8f0;
+        }
+        .btn-skyblue { background-color: #87CEEB; color: #2C3E50; border: none; font-weight: 500; }
+        .btn-skyblue:hover { background-color: #71BCE2; }
+        .form-control:focus {
+            border-color: #D4AF37; /* Tilla rang fokus */
+            box-shadow: 0 0 0 0.25rem rgba(212, 175, 55, 0.25);
+        }
+    </style>
+</head>
+<body>
+    <div class="container my-5" style="max-width: 600px;">
+        <div class="card card-custom shadow">
+            <div class="card-body p-4">
+                <h2 class="mb-4 text-secondary">✏️ Kitobni tahrirlash</h2>
+                <form method="POST" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <button type="submit" class="btn btn-skyblue">Yangilash</button>
+                    <a href="{% url 'books' %}" class="btn btn-outline-secondary">Bekor qilish</a>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

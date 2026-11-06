@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ book.title }}</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body { background-color: #F8F9FA; }
+        .card-custom {
+            background-color: #FFFFF0; /* Ivory */
+            border: 1px solid #e2e8f0;
+            border-radius: 15px;
+        }
+        .text-gold { color: #D4AF37; }
+        .btn-gold { background-color: #D4AF37; color: #fff; border: none; }
+        .btn-gold:hover { background-color: #C5A028; color: #fff; }
+        .btn-skyblue { background-color: #87CEEB; color: #2C3E50; border: none; font-weight: 500; }
+        .btn-skyblue:hover { background-color: #71BCE2; }
+    </style>
+</head>
+<body>
+    <div class="container my-5" style="max-width: 700px;">
+        <div class="card card-custom shadow">
+            <div class="card-body p-4">
+                <h2 class="card-title text-gold fw-bold mb-3">{{ book.title }}</h2>
+                
+                {% if book.cover %}
+                    <img src="{{ book.cover.url }}" alt="{{ book.title }}" class="img-fluid mb-3 rounded shadow-sm" style="max-height: 300px; width: 100%; object-fit: cover;">
+                {% endif %}
+
+                <p class="card-text"><strong>Tavsif:</strong> {{ book.description|default:"Tavsif mavjud emas." }}</p>
+                <p class="text-muted"><small>Qo'shilgan sana: {{ book.created_at|date:"Y-m-d H:i" }}</small></p>
+                
+                <div class="mt-4">
+                    <a href="{% url 'update' book.id %}" class="btn btn-gold">Tahrirlash</a>
+                    <a href="{% url 'delete' book.id %}" class="btn btn-outline-danger">O'chirish</a>
+                    <a href="{% url 'books' %}" class="btn btn-skyblue ms-2">Orqaga qaytish</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <title>Tizimga kirish</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #faf9f6; /* Ivory */
+            color: #4a4a4a;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .card {
+            background: #ffffff;
+            padding: 40px;
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(252, 228, 236, 0.5);
+            width: 100%;
+            max-width: 400px;
+            border: 1px solid #fce4ec;
+        }
+        h2 {
+            text-align: center;
+            color: #d81b60;
+            margin-bottom: 24px;
+        }
+        form p {
+            margin-bottom: 16px;
+        }
+        form label {
+            display: block;
+            margin-bottom: 6px;
+            font-weight: 500;
+            font-size: 14px;
+        }
+        form input {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            box-sizing: border-box;
+            outline: none;
+            transition: 0.3s;
+        }
+        form input:focus {
+            border-color: #f48fb1;
+            box-shadow: 0 0 5px rgba(244, 143, 177, 0.3);
+        }
+        ul.errorlist {
+            font-size: 12px;
+            color: #e53935;
+            list-style: none;
+            padding: 0;
+        }
+        button {
+            width: 100%;
+            padding: 12px;
+            background-color: #f48fb1;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.3s;
+            margin-top: 10px;
+        }
+        button:hover {
+            background-color: #ec407a;
+        }
+        .footer-link {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 14px;
+        }
+        .footer-link a {
+            color: #d81b60;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .footer-link a:hover { text-decoration: underline; }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <h2>Tizimga kirish</h2>
+        <form method="POST">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Kirish</button>
+        </form>
+        <div class="footer-link">
+            Hisobingiz yo'qmi? <a href="{% url 'register' %}">Ro'yxatdan o'tish</a>
+        </div>
+    </div>
+</body>
+</html>
